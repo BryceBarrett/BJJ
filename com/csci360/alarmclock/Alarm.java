@@ -5,7 +5,9 @@
  */
 package com.csci360.alarmclock;
 //import com.csci360.alarmclock.TimerClock;
-//import com.csci360.alarmclock.AlarmSound;
+import com.csci360.alarmclock.AlarmSound;
+import java.lang.Boolean;
+
 
 /**
  *
@@ -20,13 +22,19 @@ public class Alarm {
     private int hour;
     private int minute;
     private Period period;
-    private boolean isActive;
+    private boolean active;
+    private AlarmSound alarmSound;
     
     public Alarm() {
+        // default settings
         this.hour = 12;
         this.minute = 0;
         this.period = Period.AM;
-        this.isActive = false;                
+        this.active = false;
+        this.alarmSound = new AlarmSound();
+        
+        alarmSound.setSound("1");
+        
     }
     
     public int getHour() {
@@ -53,21 +61,29 @@ public class Alarm {
         this.period = period;
     }
 
-    public boolean isIsActive() {
-        return isActive;
+    public boolean isActive() {
+        return active;
     }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }    
+    
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
+    public void playAlarm() {
+        this.alarmSound.play();
+    }
+    
+    public void setAlarmSound(String sound) {
+        this.alarmSound.setSound(sound);
+    }
        
     // turn alarm on and off
     public void toggleAlarm() {
-        if(isActive = false) {
-            this.isActive = true;            
+        if(this.active == true) {
+            this.active = false;            
         }
         else {
-            this.isActive = false;
+            this.active = true;            
         }
     }
     
@@ -83,7 +99,8 @@ public class Alarm {
         }        
     
         if(this.getHour() == timerClock.getHour() && 
-           this.getMinute() == timerClock.getMinutes()) {
+           this.getMinute() == timerClock.getMinutes() &&
+           this.getPeriod() == clockPeriod) {
            
            return true;
         }

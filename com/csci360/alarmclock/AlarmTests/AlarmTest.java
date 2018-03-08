@@ -26,30 +26,35 @@ public class AlarmTest {
     }
     
     public static void main(String[] args) {
-        // testing compareTime method
-        // returns 'WAKE UP!' if alarm time = timer time
-
-        // create alarm object
+        // create and run timer
+        // 11:59:55 AM
+        TimerClock myClock = new TimerClock(11, 59, 55, "AM", false) ;
+        
+        // create alarm objects
         Alarm testAlarm = new Alarm();
+        Alarm testAlarm2 = new Alarm();
 
-        // set Alarm time 10:36 am
-        testAlarm.setHour(11);
-        testAlarm.setMinute(42);
-        testAlarm.setPeriod(Alarm.Period.AM);
+        // set Alarm time 12:00 PM
+        // bell alarm
+        testAlarm.setHour(12);
+        testAlarm.setMinute(0);
+        testAlarm.setPeriod(Alarm.Period.PM);        
+        testAlarm.toggleAlarm();
+        testAlarm.setAlarmSound("2");
+                
+        // set Alarm time 12:01 PM
+        // default truck alarm
+        testAlarm2.setHour(12);
+        testAlarm2.setMinute(1);
+        testAlarm2.setPeriod(Alarm.Period.PM);        
+        testAlarm2.toggleAlarm();        
         
-        testAlarm.setIsActive(true);
+        // Alarm threads              
+        Thread alarmThread1 = new Thread(new AlarmRunnable(myClock, testAlarm));
+        alarmThread1.start();
         
-        System.out.println(testAlarm.getHour());
-        System.out.println(testAlarm.getMinute());
-        System.out.println(testAlarm.getPeriod());
-
-        
-        
-        
-        TimerClock myClock = new TimerClock(11, 41, 55, "AM", false) ;
-                      
-        Thread t = new Thread(new AlarmRunnable(myClock, testAlarm));
-        t.start();
+        Thread alarmThread2 = new Thread(new AlarmRunnable(myClock, testAlarm2));
+        alarmThread2.start();
                 
     }
     

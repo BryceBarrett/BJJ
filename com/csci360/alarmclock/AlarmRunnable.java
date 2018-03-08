@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class AlarmRunnable implements Runnable {
     private TimerClock myClock;
     private Alarm myAlarm;
-    private String soundPath = "C:/Users/JoolsAli/Documents/NetBeansProjects/BJJAlarmClock/src/com/csci360/alarmclock/Sounds/firetruck.wav";
+    //private String soundPath = "C:/Users/JoolsAli/Documents/NetBeansProjects/BJJ/BJJAlarmClock/src/com/csci360/alarmclock/Sounds/firetruck.wav";
     
     public AlarmRunnable(TimerClock myClock, Alarm myAlarm) {
         this.myClock = myClock;
@@ -28,25 +28,17 @@ public class AlarmRunnable implements Runnable {
         boolean alarmTriggered = false;
         
         AlarmSound soundPlayer = new AlarmSound();
-        while(myAlarm.isIsActive()) {
+        while(myAlarm.isActive()) {
             try {
-                //System.out.println(alarmTriggered);
-                //System.out.println("comparing times...");
-                /*
-                if(myAlarm.compareTime(myClock)) {
-                //System.out.println("WAKE UP!");
-                soundPlayer.play(soundPath);
-                break;
-                }
-                */
-                Thread.sleep(1000);
+                
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(AlarmRunnable.class.getName()).log(Level.SEVERE, null, ex);
             }
             alarmTriggered = myAlarm.compareTime(myClock);
             //System.out.println(alarmTriggered);
             if(alarmTriggered) {
-                soundPlayer.play(soundPath);
+                myAlarm.playAlarm();
                 //System.out.println("alarm Triggered");
                 break;
             }

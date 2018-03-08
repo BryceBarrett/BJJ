@@ -57,10 +57,5 @@ public class TimerClock {
     public void setSeconds(int newSec){
         timeKeeper.seconds = newSec;
     }
-    
-    public void startTimer() {
-        timerObj.scheduleAtFixedRate(timeKeeper,0,1000);
-    }
-    
-    
+        
 }

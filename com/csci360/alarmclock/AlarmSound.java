@@ -17,10 +17,16 @@ import javax.sound.sampled.*;
 public class AlarmSound implements LineListener {
     
     boolean playCompleted;
+    String soundPath;
+    
+    public AlarmSound() {
+        this.playCompleted = false;
+        this.soundPath = "";
+    }
     
     // play a sound
-    void play(String soundPath) {
-        File audioFile = new File(soundPath);
+    void play() {
+        File audioFile = new File(this.soundPath);
         
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -67,10 +73,24 @@ public class AlarmSound implements LineListener {
         }
     }
     
+    
+    // set alarm sound (1,2,3...)
+    public void setSound(String sound) {
+        this.soundPath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/Sounds/" + sound + ".wav";        
+    }
+    
+    public String getSoundPath() {
+        return this.soundPath;
+    }
+    
     public static void main(String[] args) {
-        String soundPath = "C:/Users/JoolsAli/Documents/NetBeansProjects/BJJAlarmClock/src/com/csci360/alarmclock/Sounds/firetruck.wav";
+        //System.out.println("working directory = " +
+        //        System.getProperty("user.dir"));
+        //String soundPath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/Sounds/firetruck.wav";
+        
         AlarmSound soundPlayer = new AlarmSound();
-        soundPlayer.play(soundPath);
+        soundPlayer.setSound("2");        
+        soundPlayer.play();
     }
     
 }
