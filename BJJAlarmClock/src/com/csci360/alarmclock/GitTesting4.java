@@ -9,6 +9,6 @@ package com.csci360.alarmclock;
  *
  * @author jalipala
  */
-public class moreGitTesting {
+public class GitTesting4 {
     
 }
