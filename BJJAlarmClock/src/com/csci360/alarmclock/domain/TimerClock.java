@@ -38,6 +38,9 @@ public class TimerClock {
     public int getMinutes(){
         return timeKeeper.minutes;
     }
+    public int getSeconds(){
+        return timeKeeper.seconds;
+    }
     public String getMeridian(){
         return timeKeeper.meridian;
     }
