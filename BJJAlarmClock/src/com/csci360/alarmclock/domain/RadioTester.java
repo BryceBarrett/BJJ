@@ -14,12 +14,12 @@ import java.util.Timer;
 public class RadioTester {
     
     public static void main(String[] args){
-        
+        /*
         Timer timerObj = new Timer();
         Radio radioTest = new Radio();
         
         timerObj.scheduleAtFixedRate(radioTest,0,500);
-        
+        */
     }
     
 }
