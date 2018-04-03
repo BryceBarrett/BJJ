@@ -3,9 +3,11 @@
  */
 package com.csci360.alarmclock.gui;
 
+import com.csci360.alarmclock.domain.Radio;
 import com.csci360.alarmclock.domain.TimerClock;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,9 +25,13 @@ import javafx.scene.control.TextField;
  */
 public class ClockRadioAppController implements Initializable {
     
-    TimerClock clock = new TimerClock();
+    private TimerClock clock = new TimerClock();
+    private Timer timerObj = new Timer();
+    private Radio radio = new Radio();
+    private boolean radioPlaying = false;
     
-    
+    @FXML
+    private Button radioBtn;
     @FXML
     private Label time;
     @FXML
@@ -39,7 +45,16 @@ public class ClockRadioAppController implements Initializable {
     @FXML
     private ChoiceBox meridian;
     
-    
+    @FXML
+    private void handleRadio(ActionEvent event){
+        if(radioPlaying == false){
+            timerObj.scheduleAtFixedRate(radio,0,500);
+            radioPlaying = true;
+        }else{
+            timerObj.cancel();
+        }
+        
+    }
     @FXML
     private void handleTimeInput(ActionEvent event){
         int newHour = Integer.parseInt(hoursInput.getText());

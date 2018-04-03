@@ -48,6 +48,15 @@ public class TimerClock {
         return timeKeeper.militaryTime;
     }
     
+    public void toggleMilTime(){
+        if(timeKeeper.militaryTime == true){
+            timeKeeper.militaryTime = false;
+        }else{
+            timeKeeper.militaryTime = true;
+        }
+            
+    }
+    
     //Methods to set the clock
     public void setMin(int newMin){
         timeKeeper.minutes = newMin;
