@@ -11,15 +11,14 @@ import java.io.File;
  */
 public class Radio extends TimerTask {
     
-    protected String rootFilePath;
+    protected String rootFilePath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/Sounds";
     protected File folder;
     protected File[] allSubFiles;
     protected RadioPlayer radioObj;
     protected int songNum;
     
     
-    public Radio(String rootFilePath){
-        this.rootFilePath = rootFilePath;
+    public Radio(){
         folder = new File(rootFilePath);
         allSubFiles = folder.listFiles();
         songNum = 0;
@@ -39,10 +38,11 @@ public class Radio extends TimerTask {
     @Override
     public void run(){
         
-        songNum++;
-        int loop = songNum % allSubFiles.length;
+        int loop;
         
         if(radioObj.getClipLen() == radioObj.getClipPos()){
+            songNum++;
+            loop = songNum % allSubFiles.length;
             
             try{
                 radioObj.stop();

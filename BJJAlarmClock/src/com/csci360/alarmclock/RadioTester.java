@@ -5,6 +5,7 @@
  */
 package com.csci360.alarmclock;
 
+import java.io.File;
 import java.util.Timer;
 
 /**
@@ -16,7 +17,12 @@ public class RadioTester {
     public static void main(String[] args){
         
         Timer timerObj = new Timer();
-        Radio radioTest = new Radio("/Users/brycebarrett/Desktop/Songs");
+        Radio radioTest = new Radio();
+        String test = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/Sounds";
+        File folder = new File(test);
+        File[] test2 = folder.listFiles();
+        System.out.println(test2[3].getAbsolutePath());
+        
         
         timerObj.scheduleAtFixedRate(radioTest,0,500);
         
