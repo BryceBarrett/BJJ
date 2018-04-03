@@ -60,5 +60,8 @@ public class TimerClock {
     public void setSeconds(int newSec){
         timeKeeper.seconds = newSec;
     }
+    public void setMeridian(String newMer){
+        timeKeeper.meridian = newMer;
+    }
         
 }

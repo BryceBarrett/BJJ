@@ -8,25 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: DimGrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.gui.ClockRadioAppController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(&quot;http://wallpaper-gallery.net/images/cool-simple-wallpapers/cool-simple-wallpapers-22.jpg&quot;);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.gui.ClockRadioAppController">
    <children>
-      <Button fx:id="button" layoutX="38.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleButton1Action" prefHeight="32.0" prefWidth="64.0" text="Set TIme" textFill="#b93030">
+      <Button fx:id="button" layoutX="53.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleTimeInput" prefHeight="32.0" prefWidth="64.0" text="Set Time" textFill="#b93030">
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="14.0" prefHeight="165.0" prefWidth="317.0" textAlignment="CENTER" textFill="#753636" wrapText="true">
+      <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="75.0" prefWidth="202.0" style="-fx-background-color: Azure; -fx-background-radius: 20 20 20 20;" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="AppleGothic Regular" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="27.0" layoutY="353.0" prefHeight="27.0" prefWidth="22.0" />
-      <Label layoutX="56.0" layoutY="358.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
-      <TextField layoutX="59.0" layoutY="353.0" prefHeight="27.0" prefWidth="22.0" />
-      <TextField layoutX="91.0" layoutY="353.0" prefHeight="27.0" prefWidth="22.0" />
-      <ChoiceBox layoutX="113.0" layoutY="353.0" prefHeight="27.0" prefWidth="15.0">
+      <TextField fx:id="hoursInput" layoutX="17.0" layoutY="347.0" prefHeight="27.0" prefWidth="36.0" />
+      <Label layoutX="60.0" layoutY="352.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
+      <TextField fx:id="minutesInput" layoutX="71.0" layoutY="347.0" prefHeight="27.0" prefWidth="36.0" />
+      <TextField fx:id="secondsInput" layoutX="117.0" layoutY="347.0" prefHeight="27.0" prefWidth="36.0" />
+      <ChoiceBox fx:id="meridian" layoutX="163.0" layoutY="347.0" prefHeight="27.0" prefWidth="15.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ChoiceBox>
+      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="378.0" prefHeight="17.0" prefWidth="101.0" textFill="RED" wrapText="true" />
    </children>
 </AnchorPane>

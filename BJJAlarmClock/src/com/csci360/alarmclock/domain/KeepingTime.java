@@ -26,7 +26,7 @@ public class KeepingTime extends TimerTask {
     
     public KeepingTime(){
         hours = 1;
-        minutes = 0;
+        minutes = 00;
         seconds = 0;
         meridian = "AM";
         militaryTime = false;
@@ -96,8 +96,14 @@ public class KeepingTime extends TimerTask {
                 "." + Integer.toString(seconds) + " " + meridian);
         }
         else{
-            System.out.println(Integer.toString(hours) + ": " + Integer.toString(minutes) + 
-                "." + Integer.toString(seconds));
+            if(minutes >= 10){
+                System.out.println(Integer.toString(hours) + ": " + Integer.toString(minutes) + 
+                    "." + Integer.toString(seconds));
+            }
+            else{
+                System.out.println(Integer.toString(hours) + ": 0" + Integer.toString(minutes) + 
+                    "." + Integer.toString(seconds));
+            }
         }
         
         
