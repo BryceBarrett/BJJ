@@ -1,7 +1,7 @@
 /*
  * Simple Class to handle TimerTask's
  */
-package com.csci360.alarmclock;
+package com.csci360.alarmclock.domain;
 import java.util.TimerTask;
 
 /**
@@ -89,6 +89,7 @@ public class KeepingTime extends TimerTask {
         }
         
         
+        
         //Check to print out the meridian if military time is not being used
         if(militaryTime == false){
             System.out.println(Integer.toString(hours) + ": " + Integer.toString(minutes) + 
@@ -98,6 +99,7 @@ public class KeepingTime extends TimerTask {
             System.out.println(Integer.toString(hours) + ": " + Integer.toString(minutes) + 
                 "." + Integer.toString(seconds));
         }
+        
         
         
     }

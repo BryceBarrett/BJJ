@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.csci360.alarmclock;
+package com.csci360.alarmclock.domain.RadioMisc;
 
 import java.io.File;
 

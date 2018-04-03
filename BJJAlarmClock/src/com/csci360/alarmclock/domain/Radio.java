@@ -1,7 +1,7 @@
 /*
  * 
  */
-package com.csci360.alarmclock;
+package com.csci360.alarmclock.domain;
 import java.util.TimerTask;
 import java.io.File;
 

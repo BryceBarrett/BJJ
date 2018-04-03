@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.csci360.alarmclock;
+package com.csci360.alarmclock.domain;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class AlarmSound implements LineListener {
             audioClip.addLineListener(this);
             audioClip.open(audioStream);
             
-            audioClip.start();
+            audioClip.loop(5);
             
             while (!playCompleted) {
                 try {
@@ -61,6 +61,10 @@ public class AlarmSound implements LineListener {
         }        
     }
     
+    public void stop() {
+        this.playCompleted = true;
+    }
+    
     public void update(LineEvent event) {
         LineEvent.Type type = event.getType();
         
@@ -76,7 +80,7 @@ public class AlarmSound implements LineListener {
     
     // set alarm sound (1,2,3...)
     public void setSound(String sound) {
-        this.soundPath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/Sounds/" + sound + ".wav";        
+        this.soundPath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/domain/Sounds/" + sound + ".wav";        
     }
     
     public String getSoundPath() {

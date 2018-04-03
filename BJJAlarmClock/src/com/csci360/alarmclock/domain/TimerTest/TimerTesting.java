@@ -1,7 +1,7 @@
 /*
  * Just messing around with timers in java
  */
-package timertesting;
+package com.csci360.alarmclock.domain.TimerTest;
 import java.util.Timer;
 import java.util.TimerTask;
 

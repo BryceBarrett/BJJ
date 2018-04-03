@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.csci360.alarmclock;
+package com.csci360.alarmclock.domain;
 //import com.csci360.alarmclock.TimerClock;
-import com.csci360.alarmclock.AlarmSound;
+import com.csci360.alarmclock.domain.AlarmSound;
 import java.lang.Boolean;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -80,11 +81,23 @@ public class Alarm {
     // turn alarm on and off
     public void toggleAlarm() {
         if(this.active == true) {
-            this.active = false;            
+            this.active = false;
+            this.alarmSound.stop();
         }
         else {
             this.active = true;            
         }
+    }
+    
+    public void snooze() {
+        this.alarmSound.stop();
+        try {
+            TimeUnit.MINUTES.sleep(1);
+            System.out.println("alarm awake");
+        } catch (InterruptedException e) {
+            System.out.println("error");
+        }
+        
     }
     
     // compare Alarm time with Clock time

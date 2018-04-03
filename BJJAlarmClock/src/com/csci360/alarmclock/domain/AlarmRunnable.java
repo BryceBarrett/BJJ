@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.csci360.alarmclock;
-import com.csci360.alarmclock.Alarm;
-import com.csci360.alarmclock.AlarmSound;
+package com.csci360.alarmclock.domain;
+import com.csci360.alarmclock.domain.Alarm;
+import com.csci360.alarmclock.domain.AlarmSound;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +27,7 @@ public class AlarmRunnable implements Runnable {
     public void run() {
         boolean alarmTriggered = false;
         
-        AlarmSound soundPlayer = new AlarmSound();
+        //AlarmSound soundPlayer = new AlarmSound();
         while(myAlarm.isActive()) {
             try {
                 
@@ -40,6 +40,7 @@ public class AlarmRunnable implements Runnable {
             if(alarmTriggered) {
                 myAlarm.playAlarm();
                 //System.out.println("alarm Triggered");
+                
                 break;
             }
         }        

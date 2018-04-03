@@ -1,7 +1,7 @@
 /*
  * Simple Class to handle TimerTask's
  */
-package timertesting;
+package com.csci360.alarmclock.domain.TimerTest;
 import java.util.TimerTask;
 
 /**

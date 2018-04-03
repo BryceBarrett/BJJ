@@ -1,3 +1,5 @@
+package com.csci360.alarmclock.domain.AlarmTests;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,9 +10,9 @@
 // import com.csci360.alarmclock.KeepingTime;
 import java.util.Timer;
 import java.util.TimerTask;
-import com.csci360.alarmclock.Alarm;
-import com.csci360.alarmclock.TimerClock;
-import com.csci360.alarmclock.AlarmRunnable;
+import com.csci360.alarmclock.domain.Alarm;
+import com.csci360.alarmclock.domain.TimerClock;
+import com.csci360.alarmclock.domain.AlarmRunnable;
 
 
 /**
