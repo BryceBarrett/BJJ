@@ -41,4 +41,6 @@ After pushing:
 2) Click "Create pull request"
 3) Click "Merge pull request", then "Confirm merge"
 
-
+PULLING CHANGES:
+1) Go to Team>Remote>Pull
+2) Click "Next"
