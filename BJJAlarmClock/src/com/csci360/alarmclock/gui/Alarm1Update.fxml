@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(&quot;http://wallpaper-gallery.net/images/cool-simple-wallpapers/cool-simple-wallpapers-22.jpg&quot;);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="com.csci360.alarmclock.gui.Alarm1UpdateController">
+   <children>
+      <Label layoutX="209.0" layoutY="159.0" prefHeight="83.0" prefWidth="183.0" style="-fx-background-color: Azure; -fx-background-radius: 20 20 20;" />
+      <TextField layoutX="202.0" layoutY="266.0" prefHeight="29.0" prefWidth="61.0" />
+      <TextField layoutX="279.0" layoutY="266.0" prefHeight="29.0" prefWidth="61.0" />
+      <Button fx:id="updateAlarmTime" layoutX="351.0" layoutY="268.0" mnemonicParsing="false" text="Update" />
+      <Label layoutX="269.0" layoutY="272.0" text=":" textFill="WHITE" />
+      <Button fx:id="setAlarmSound" layoutX="490.0" layoutY="159.0" mnemonicParsing="false" text="Set Sound" />
+      <ChoiceBox layoutX="490.0" layoutY="200.0" prefHeight="29.0" prefWidth="71.0" />
+      <Button fx:id="clockBtn" layoutX="55.0" layoutY="159.0" mnemonicParsing="false" onAction="#changeClockScene" text="Clock" />
+   </children>
+</AnchorPane>

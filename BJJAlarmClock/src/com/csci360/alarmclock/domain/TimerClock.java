@@ -12,6 +12,7 @@ import java.util.Timer;
  * @author brycebarrett
  */
 public class TimerClock {
+        
     
     private final Timer timerObj = new Timer();
     public KeepingTime timeKeeper;
@@ -29,7 +30,8 @@ public class TimerClock {
                 militaryTime);
         timerObj.scheduleAtFixedRate(timeKeeper,0,1000);
         
-    }
+    }    
+    
     
     //Methods to get data from the clock
     public int getHour(){
