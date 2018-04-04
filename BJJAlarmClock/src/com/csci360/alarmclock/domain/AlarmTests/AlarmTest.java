@@ -40,7 +40,7 @@ public class AlarmTest {
         // bell alarm
         testAlarm.setHour(12);
         testAlarm.setMinute(0);
-        testAlarm.setPeriod(Alarm.Period.PM);        
+        testAlarm.setPeriod("PM");        
         testAlarm.toggleAlarm();
         testAlarm.setAlarmSound("2");
                 
@@ -48,7 +48,7 @@ public class AlarmTest {
         // default truck alarm
         testAlarm2.setHour(12);
         testAlarm2.setMinute(1);
-        testAlarm2.setPeriod(Alarm.Period.PM);        
+        testAlarm2.setPeriod("PM");        
         testAlarm2.toggleAlarm();        
         
         // Alarm threads              

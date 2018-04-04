@@ -3,6 +3,8 @@
  */
 package com.csci360.alarmclock.gui;
 
+import com.csci360.alarmclock.domain.Alarm;
+import com.csci360.alarmclock.domain.AlarmRunnable;
 import com.csci360.alarmclock.domain.Radio;
 import com.csci360.alarmclock.domain.TimerClock;
 import java.io.IOException;
@@ -31,10 +33,17 @@ import javafx.stage.Stage;
  */
 public class ClockRadioAppController implements Initializable {
     
+    public enum Period {
+        AM, PM
+    }
+    
     private TimerClock clock = new TimerClock();
     private Timer timerObj = new Timer();
     private Radio radio; //= new Radio();
-    private boolean radioPlaying = false;      
+    private boolean radioPlaying = false;
+    private Alarm a1 = new Alarm();
+    private Alarm a2 = new Alarm();
+
     
     
     @FXML
@@ -45,6 +54,14 @@ public class ClockRadioAppController implements Initializable {
     private Button alarm1Btn;
     @FXML
     private Button alarm2Btn;
+    @FXML
+    private Button alarm1UpdateBtn;
+    @FXML
+    private Button alarm2UpdateBtn;    
+    @FXML
+    private Button alarm1Snooze;
+    @FXML
+    private Button alarm2Snooze;
     @FXML
     private TextField alarm1Hour;
     @FXML
@@ -57,6 +74,10 @@ public class ClockRadioAppController implements Initializable {
     private ChoiceBox alarm1Sound;
     @FXML
     private ChoiceBox alarm2Sound;
+    @FXML
+    private ChoiceBox alarm1Period;
+    @FXML
+    private ChoiceBox alarm2Period;
     
     @FXML
     private Label time;
@@ -69,9 +90,13 @@ public class ClockRadioAppController implements Initializable {
     @FXML
     private Label warningLabel;
     @FXML
-    private ChoiceBox meridian;  
+    private ChoiceBox meridian;
     
+    // initialize thread for alarm checker
+    Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+    //alarmThread1.start();
     
+    /*
     //method for changing to alarm 1 update scene
     @FXML
     public void changeAlarm1UpdateScene(ActionEvent event) throws IOException {
@@ -83,6 +108,46 @@ public class ClockRadioAppController implements Initializable {
         
         window.setScene(alarm1ViewScene);
         //window.show();
+    }
+    */
+    
+    // method for updating alarm 1 time
+    @FXML
+    public void updateAlarm1(ActionEvent event) throws IOException {
+        int a1Hour = Integer.parseInt(alarm1Hour.getText());
+        a1.setHour(a1Hour);
+        int a1Min = Integer.parseInt(alarm1Min.getText());
+        a1.setMinute(a1Min);
+        String a1Period = alarm1Period.getSelectionModel().getSelectedItem().toString();
+        a1.setPeriod(a1Period);
+        alarm1Hour.clear();
+        alarm1Min.clear();
+        
+        // activate alarm and start alarm comparer thread
+        if(!a1.isActive()) {
+            a1.toggleAlarm();
+            //Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+            alarmThread1.start();
+        }
+    }
+    
+    @FXML
+    public void toggleAlarm1(ActionEvent event) throws IOException, InterruptedException {
+        a1.toggleAlarm();
+        // starts comparer thread if alarm activated
+        // joins thread if alarm deactivated
+        if(a1.isActive()) {
+            Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+            alarmThread1.start();            
+        }
+        else {
+            alarmThread1.join();
+        }
+    }
+    
+    @FXML
+    public void snoozeAlarm1(ActionEvent event) throws IOException {
+        a1.snooze();
     }
     
     @FXML
@@ -120,12 +185,12 @@ public class ClockRadioAppController implements Initializable {
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
+    public void initialize(URL url, ResourceBundle rb) {        
         
         //Creating choices for the choicebox by using an observableList
         ObservableList<String> availableChoices = FXCollections.observableArrayList("AM", "PM");
-        meridian.setItems(availableChoices);
+        meridian.setItems(availableChoices);        
+        alarm1Period.setItems(availableChoices);
 
         //Thread to update what string is stored in the clock label as the time
         //changes.

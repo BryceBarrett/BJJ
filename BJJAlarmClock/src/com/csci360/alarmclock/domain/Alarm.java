@@ -16,13 +16,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class Alarm {
     
+    /*
     public enum Period {
         AM, PM
     }
+    */
       
     private int hour;
     private int minute;
-    private Period period;
+    private String period;
     private boolean active;
     private AlarmSound alarmSound;
     
@@ -30,7 +32,7 @@ public class Alarm {
         // default settings
         this.hour = 12;
         this.minute = 0;
-        this.period = Period.AM;
+        this.period = "AM";
         this.active = false;
         this.alarmSound = new AlarmSound();
         
@@ -54,11 +56,11 @@ public class Alarm {
         this.minute = minute;
     }
     
-    public Period getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
-    public void setPeriod(Period period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 
@@ -81,11 +83,12 @@ public class Alarm {
     // turn alarm on and off
     public void toggleAlarm() {
         if(this.active == true) {
-            this.active = false;
+            this.active = false;            
             this.alarmSound.stop();
         }
         else {
-            this.active = true;            
+            this.active = true;
+            System.out.println("alarm active");
         }
     }
     
@@ -102,18 +105,20 @@ public class Alarm {
     
     // compare Alarm time with Clock time
     public boolean compareTime(TimerClock timerClock) {
-        Period clockPeriod;
+        //Period clockPeriod;
         
+        /*
         if(timerClock.getMeridian().equals("AM")) {
             clockPeriod = Period.AM;
         }
         else {
             clockPeriod = Period.PM;
-        }        
+        }
+        */
     
         if(this.getHour() == timerClock.getHour() && 
            this.getMinute() == timerClock.getMinutes() &&
-           this.getPeriod() == clockPeriod) {
+           this.getPeriod() == timerClock.getMeridian()) {
            
            return true;
         }

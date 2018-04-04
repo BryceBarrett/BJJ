@@ -29,24 +29,38 @@
          </cursor>
       </ChoiceBox>
       <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="378.0" prefHeight="17.0" prefWidth="101.0" textFill="RED" wrapText="true" />
-      <Button fx:id="radioBtn" layoutX="370.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRadio" prefHeight="46.0" prefWidth="158.0" text="Radio Switch" textFill="#1a7a82" />
-      <Button fx:id="alarm1Btn" layoutX="370.0" layoutY="97.0" mnemonicParsing="false" onAction="#changeAlarm1UpdateScene" prefHeight="46.0" prefWidth="158.0" text="Alarm 1" />
-      <Button fx:id="alarm2Btn" layoutX="370.0" layoutY="222.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="158.0" text="Alarm 2" />
-      <TextField fx:id="alarm1Hour" layoutX="370.0" layoutY="163.0" prefHeight="25.0" prefWidth="49.0" />
-      <TextField fx:id="alarm1Min" layoutX="433.0" layoutY="163.0" prefHeight="25.0" prefWidth="49.0" />
-      <ChoiceBox fx:id="alarm1Sound" layoutX="496.0" layoutY="162.0" prefHeight="27.0" prefWidth="15.0">
+      <Button fx:id="radioBtn" layoutX="316.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleRadio" prefHeight="46.0" prefWidth="158.0" text="Radio Switch" textFill="#1a7a82" />
+      <Button fx:id="alarm1Btn" layoutX="316.0" layoutY="126.0" mnemonicParsing="false" onAction="#toggleAlarm1" prefHeight="46.0" prefWidth="158.0" text="Alarm 1" />
+      <Button fx:id="alarm2Btn" layoutX="521.0" layoutY="290.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" text="Update" />
+      <TextField fx:id="alarm1Hour" layoutX="316.0" layoutY="188.0" prefHeight="25.0" prefWidth="49.0" />
+      <TextField fx:id="alarm1Min" layoutX="380.0" layoutY="188.0" prefHeight="25.0" prefWidth="49.0" />
+      <ChoiceBox fx:id="alarm1Sound" layoutX="482.0" layoutY="187.0" prefHeight="27.0" prefWidth="15.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ChoiceBox>
-      <TextField fx:id="alarm2Min" layoutX="439.0" layoutY="290.0" prefHeight="25.0" prefWidth="49.0" />
-      <TextField fx:id="alarm2Hour" layoutX="370.0" layoutY="290.0" prefHeight="25.0" prefWidth="49.0" />
-      <ChoiceBox fx:id="alarm2Sound" layoutX="496.0" layoutY="289.0" prefHeight="27.0" prefWidth="15.0">
+      <TextField fx:id="alarm2Min" layoutX="380.0" layoutY="290.0" prefHeight="25.0" prefWidth="49.0" />
+      <TextField fx:id="alarm2Hour" layoutX="316.0" layoutY="290.0" prefHeight="25.0" prefWidth="49.0" />
+      <ChoiceBox fx:id="alarm2Sound" layoutX="482.0" layoutY="289.0" prefHeight="27.0" prefWidth="15.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ChoiceBox>
-      <Label layoutX="424.0" layoutY="294.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
-      <Label layoutX="421.0" layoutY="167.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
+      <Label layoutX="371.0" layoutY="294.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
+      <Label layoutX="371.0" layoutY="192.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
+      <ChoiceBox fx:id="alarm1Period" layoutX="442.0" layoutY="187.0" prefHeight="27.0" prefWidth="15.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ChoiceBox>
+      <ChoiceBox fx:id="alarm2Period" layoutX="442.0" layoutY="289.0" prefHeight="27.0" prefWidth="15.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ChoiceBox>
+      <Button fx:id="alarm2Btn1" layoutX="316.0" layoutY="230.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="158.0" text="Alarm 2" />
+      <Button fx:id="alarm1UpdateBtn" layoutX="521.0" layoutY="188.0" mnemonicParsing="false" onAction="#updateAlarm1" prefHeight="17.0" prefWidth="57.0" text="Update" />
+      <Button fx:id="alarm1Btn1" layoutX="498.0" layoutY="126.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="46.0" prefWidth="86.0" text="Snooze 1" />
+      <Button fx:id="alarm1Btn11" layoutX="498.0" layoutY="230.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="86.0" text="Snooze 2" />
    </children>
 </AnchorPane>

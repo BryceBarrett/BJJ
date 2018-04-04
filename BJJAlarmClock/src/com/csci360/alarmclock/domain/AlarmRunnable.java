@@ -25,6 +25,7 @@ public class AlarmRunnable implements Runnable {
     
     @Override
     public void run() {
+        //System.out.println("alarm compare thread running");
         boolean alarmTriggered = false;
         
         //AlarmSound soundPlayer = new AlarmSound();

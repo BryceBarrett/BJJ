@@ -36,7 +36,7 @@ public class AlarmSound implements LineListener {
             audioClip.addLineListener(this);
             audioClip.open(audioStream);
             
-            audioClip.loop(5);
+            audioClip.loop(2);
             
             while (!playCompleted) {
                 try {
