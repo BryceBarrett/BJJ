@@ -98,7 +98,7 @@ public class RadioPlayer {
         clip.setMicrosecondPosition(0);
         this.play();
     }
-     
+    
     // Method to stop the audio
     public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException 
     {
