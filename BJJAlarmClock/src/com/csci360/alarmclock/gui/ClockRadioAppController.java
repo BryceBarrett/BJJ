@@ -16,16 +16,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -50,6 +46,13 @@ public class ClockRadioAppController implements Initializable {
     //Radio
     @FXML
     private Button pauseBtn;
+    @FXML
+    private Label statusLbl;
+    @FXML
+    private Button radioBtn;
+    @FXML
+    private Button onOffRadBtn;
+    
     
     //alarm
     @FXML
@@ -155,15 +158,24 @@ public class ClockRadioAppController implements Initializable {
     
     
     //Methods to handle the operations of the radio
+    
+    //Method to handle turning the radio on/initializing
     @FXML
     private void handleRadio(ActionEvent event){
-        radio = new Radio();
+        //radio = new Radio();
         if(radioPlaying == false){
+            radio = new Radio();
             timerObj.scheduleAtFixedRate(radio,0,500);
             radioPlaying = true;
+            statusLbl.setText("Current Status: Playing");
+            statusLbl.setTextFill(Color.web("#00b300"));  
+            radioBtn.setVisible(false);
+            onOffRadBtn.setVisible(true);
         }else{
-            timerObj.cancel();
+            /*timerObj.cancel();
             radioPlaying = false;
+            statusLbl.setText("Current Status: Off");
+            statusLbl.setTextFill(Color.web("#ff0000"));*/
         }
         
     }
@@ -180,9 +192,13 @@ public class ClockRadioAppController implements Initializable {
         if(radio.status.equals("playing")){
             radio.pauseRadio();
             pauseBtn.setText("Resume");
+            statusLbl.setText("Current Status: Paused");
+            statusLbl.setTextFill(Color.web("#ffffff")); 
         }else{
             radio.resumeFromPause();
             pauseBtn.setText("Pause");
+            statusLbl.setText("Current Status: Playing");
+            statusLbl.setTextFill(Color.web("#00b300")); 
         }
     }
     @FXML
@@ -190,7 +206,19 @@ public class ClockRadioAppController implements Initializable {
         radio.restartSong();
     }
     
-    
+    @FXML
+    private void handleStopStartRadio(ActionEvent event){
+        
+        if(radio.status.equals("stopped")){
+            radio.resumeRadio();
+            onOffRadBtn.setText("Radio Off");
+        }else{
+            radio.stopRadio();
+            onOffRadBtn.setText("Radio On");
+        }
+            
+        
+    }
     
     //Methods to handle the clock
     @FXML
@@ -219,6 +247,7 @@ public class ClockRadioAppController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {        
         
+        onOffRadBtn.setVisible(false);
         //Creating choices for the choicebox by using an observableList
         ObservableList<String> availableChoices = FXCollections.observableArrayList("AM", "PM");
         meridian.setItems(availableChoices);        
