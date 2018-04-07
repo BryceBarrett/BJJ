@@ -4,6 +4,8 @@
 package com.csci360.alarmclock.domain;
 import java.util.TimerTask;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  *
@@ -11,7 +13,7 @@ import java.io.File;
  */
 public class Radio extends TimerTask {
     
-    protected String rootFilePath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/domain/Sounds";
+    protected String rootFilePath = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/SongsTest";
     protected File folder;
     protected File[] allSubFiles;
     protected RadioPlayer radioObj;
@@ -21,12 +23,18 @@ public class Radio extends TimerTask {
     
     public Radio(){
         
+        String path2DS = System.getProperty("user.dir") + "/src/com/csci360/alarmclock/SongsTest/.DS_Store";
+        try{
+            Files.deleteIfExists(Paths.get(path2DS));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         folder = new File(rootFilePath);
         allSubFiles = folder.listFiles();
         songNum = 0;
         
         try{
-            radioObj = new RadioPlayer(allSubFiles[songNum].getAbsolutePath());
+            radioObj = new RadioPlayer(allSubFiles[songNum % allSubFiles.length].getAbsolutePath());
             radioObj.play();
             status = "playing";
         }
@@ -38,7 +46,7 @@ public class Radio extends TimerTask {
     //Method to restart the song on the radio
     public void restartSong(){
         try{
-            radioObj.filePath = allSubFiles[songNum].getAbsolutePath();
+            radioObj.filePath = allSubFiles[songNum % allSubFiles.length].getAbsolutePath();
             radioObj.restart();
         }catch(Exception e){
             System.out.println(e.getMessage()); 
@@ -57,6 +65,7 @@ public class Radio extends TimerTask {
     //Method to resume the radio from the song that it was stopped on
     public void resumeRadio(){
         try{
+            radioObj.resetAudioStream(allSubFiles[songNum % allSubFiles.length].getAbsolutePath());
             radioObj.play();
             status = "playing";
         }catch(Exception e){
@@ -72,7 +81,7 @@ public class Radio extends TimerTask {
     public void resumeFromPause(){
         try{
             //radioObj.resetAudioStream(allSubFiles[songNum].getAbsolutePath());
-            radioObj.filePath = allSubFiles[songNum].getAbsolutePath();
+            radioObj.filePath = allSubFiles[songNum % allSubFiles.length].getAbsolutePath();
             radioObj.resumeAudio(); 
             status = "playing";
         }catch(Exception e){
