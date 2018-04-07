@@ -16,6 +16,7 @@ public class Radio extends TimerTask {
     protected File[] allSubFiles;
     protected RadioPlayer radioObj;
     protected int songNum;
+    protected String status;
     
     
     public Radio(){
@@ -27,11 +28,54 @@ public class Radio extends TimerTask {
         try{
             radioObj = new RadioPlayer(allSubFiles[songNum].getAbsolutePath());
             radioObj.play();
+            status = "playing";
         }
         catch(Exception e){
             System.out.println("Bad File Path/Audio File");
+        }   
+    }
+    
+    //Method to restart the song on the radio
+    public void restartSong(){
+        try{
+            radioObj.restart();
+        }catch(Exception e){
+            System.out.println(e.getMessage()); 
         }
-        
+    }
+    
+    //Method to stop the radio
+    public void stopRadio(){
+        try{
+            radioObj.stop();
+            status = "stopped";
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    //Method to resume the radio from the song that it was stopped on
+    public void resumeRadio(){
+        try{
+            radioObj.resetAudioStream(allSubFiles[songNum].getAbsolutePath());
+            radioObj.play();
+            status = "playing";
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    //Method to pause the current song playing
+    public void pauseRadio(){
+        radioObj.pause();
+        status = "paused";
+    }
+    //Method to resume the current song if it is paused
+    public void resumeFromPause(){
+        try{
+            radioObj.resumeAudio(); 
+            status = "playing";
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
     }
     
