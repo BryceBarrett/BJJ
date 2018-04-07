@@ -37,6 +37,8 @@ public class ClockRadioAppController implements Initializable {
         AM, PM
     }
     
+    
+    //Logic objects from created classes
     private TimerClock clock = new TimerClock();
     private Timer timerObj = new Timer();
     private Radio radio; //= new Radio();
@@ -46,8 +48,6 @@ public class ClockRadioAppController implements Initializable {
 
     
     
-    @FXML
-    private Button radioBtn;
     
     //alarm
     @FXML
@@ -79,6 +79,7 @@ public class ClockRadioAppController implements Initializable {
     @FXML
     private ChoiceBox alarm2Period;
     
+    //Clock 
     @FXML
     private Label time;
     @FXML
@@ -150,6 +151,8 @@ public class ClockRadioAppController implements Initializable {
         a1.snooze();
     }
     
+    
+    //Methods to handle the operations of the radio
     @FXML
     private void handleRadio(ActionEvent event){
         radio = new Radio();
@@ -158,9 +161,27 @@ public class ClockRadioAppController implements Initializable {
             radioPlaying = true;
         }else{
             timerObj.cancel();
+            radioPlaying = false;
         }
         
     }
+    //Method to pause current song
+    @FXML
+    private void handlePauseSong(ActionEvent event){
+        radio.pauseRadio();
+    }
+    @FXML
+    private void handleResumePausedSong(ActionEvent event){
+        
+    }
+    @FXML
+    private void handleRestartSong(ActionEvent event){
+        radio.restartSong();
+    }
+    
+    
+    
+    //Methods to handle the clock
     @FXML
     private void handleTimeInput(ActionEvent event){
         int newHour = Integer.parseInt(hoursInput.getText());
@@ -183,7 +204,7 @@ public class ClockRadioAppController implements Initializable {
         }
     }
     
-    
+    //This method will run everytime the scene gets set to this one/class
     @Override
     public void initialize(URL url, ResourceBundle rb) {        
         

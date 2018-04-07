@@ -19,14 +19,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class RadioPlayer {
     // to store current position
-    Long currentFrame;
-    Clip clip;
+    public Long currentFrame;
+    public Clip clip;
      
     // current status of clip
-    String status;
+    public String status;
      
-    AudioInputStream audioInputStream;
-    String filePath;
+    public AudioInputStream audioInputStream;
+    public String filePath;
  
     // constructor to initialize streams and clip
     public RadioPlayer(String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException 

@@ -237,8 +237,7 @@ public class AlarmTest {
         Alarm instance = new Alarm();
         
         instance.setHour(11);
-        instance.setMinute(59);
-        instance.setPeriod(Alarm.Period.AM);        
+        instance.setMinute(59);       
         
         
         boolean expResult = true;
