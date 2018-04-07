@@ -47,7 +47,9 @@ public class ClockRadioAppController implements Initializable {
     private Alarm a2 = new Alarm();
 
     
-    
+    //Radio
+    @FXML
+    private Button pauseBtn;
     
     //alarm
     @FXML
@@ -165,14 +167,23 @@ public class ClockRadioAppController implements Initializable {
         }
         
     }
+    
+    //Method to skip the currently playing song
+    @FXML
+    private void handleSkipSong(ActionEvent event){
+        radio.skipSong();
+    }
+    
     //Method to pause current song
     @FXML
     private void handlePauseSong(ActionEvent event){
-        radio.pauseRadio();
-    }
-    @FXML
-    private void handleResumePausedSong(ActionEvent event){
-        
+        if(radio.status.equals("playing")){
+            radio.pauseRadio();
+            pauseBtn.setText("Resume");
+        }else{
+            radio.resumeFromPause();
+            pauseBtn.setText("Pause");
+        }
     }
     @FXML
     private void handleRestartSong(ActionEvent event){
