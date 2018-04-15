@@ -35,6 +35,7 @@ public class Alarm {
         this.period = "AM";
         this.active = false;
         this.alarmSound = new AlarmSound();
+        this.alarmSound.playCompleted = true;
         
         alarmSound.setSound("1");
         
@@ -120,7 +121,7 @@ public class Alarm {
                 ex.printStackTrace();
             }
             
-            this.alarmSound.playCompleted = false;
+            this.alarmSound.playCompleted = true;
         }        
         
     }
