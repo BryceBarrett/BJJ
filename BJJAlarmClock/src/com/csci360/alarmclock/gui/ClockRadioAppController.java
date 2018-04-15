@@ -55,8 +55,12 @@ public class ClockRadioAppController implements Initializable {
     
     
     //alarm
+    @FXML 
+    private Label alarm1time;
+    @FXML 
+    private Label alarm2time;
     @FXML
-    private Button alarm1Btn;
+    private Button alarm1Btn;    
     @FXML
     private Button alarm2Btn;
     @FXML
@@ -80,7 +84,7 @@ public class ClockRadioAppController implements Initializable {
     @FXML
     private ChoiceBox alarm2Sound;
     @FXML
-    private ChoiceBox alarm1Period;
+    private ChoiceBox alarm1Period;    
     @FXML
     private ChoiceBox alarm2Period;
     
@@ -100,6 +104,7 @@ public class ClockRadioAppController implements Initializable {
     
     // initialize thread for alarm checker
     Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+    Thread alarmThread2 = new Thread(new AlarmRunnable(clock, a2));
     //alarmThread1.start();
     
     /*
@@ -129,14 +134,57 @@ public class ClockRadioAppController implements Initializable {
         alarm1Hour.clear();
         alarm1Min.clear();
         
+        String mySound = alarm1Sound.getSelectionModel().getSelectedItem().toString();
+        a1.setAlarmSound(mySound);
+        
+        // display alarm time
+        displayAlarmTime(a1, alarm1time);
+        
+        /*
         // activate alarm and start alarm comparer thread
         if(!a1.isActive()) {
             a1.toggleAlarm();
+            alarm1Btn.setText("On");
             //Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
             alarmThread1.start();
         }
+        else {
+            alarm1Btn.setText("On");
+            alarmThread1.start();
+        }
+        */
     }
     
+    // method for updating alarm 2 time
+    @FXML
+    public void updateAlarm2(ActionEvent event) throws IOException {
+        int a2Hour = Integer.parseInt(alarm2Hour.getText());
+        a2.setHour(a2Hour);
+        int a2Min = Integer.parseInt(alarm2Min.getText());
+        a2.setMinute(a2Min);
+        String a2Period = alarm2Period.getSelectionModel().getSelectedItem().toString();
+        a2.setPeriod(a2Period);
+        alarm2Hour.clear();
+        alarm2Min.clear();
+        
+        String mySound = alarm2Sound.getSelectionModel().getSelectedItem().toString();
+        a2.setAlarmSound(mySound);
+        
+        // display alarm time
+        displayAlarmTime(a2, alarm2time);
+        
+        /*
+        // activate alarm and start alarm comparer thread
+        if(!a2.isActive()) {
+            a2.toggleAlarm();
+            alarm2Btn.setText("On");
+            //Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+            alarmThread2.start();
+        }
+        */
+    }
+    
+    // toggle for alarm 1
     @FXML
     public void toggleAlarm1(ActionEvent event) throws IOException, InterruptedException {
         a1.toggleAlarm();
@@ -144,17 +192,44 @@ public class ClockRadioAppController implements Initializable {
         // joins thread if alarm deactivated
         if(a1.isActive()) {
             Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
-            alarmThread1.start();            
+            alarmThread1.start();
+            alarm1Btn.setText("On");
         }
         else {
             alarmThread1.join();
+            alarm1Btn.setText("Off");
+        }  
+        
+    }
+    
+    // toggle for alarm 2
+    @FXML
+    public void toggleAlarm2(ActionEvent event) throws IOException, InterruptedException {
+        a2.toggleAlarm();
+        // starts comparer thread if alarm activated
+        // joins thread if alarm deactivated
+        if(a2.isActive()) {
+            Thread alarmThread2 = new Thread(new AlarmRunnable(clock, a2));
+            alarmThread2.start();
+            alarm2Btn.setText("On");
         }
+        else {
+            alarmThread2.join();
+            alarm2Btn.setText("Off");
+        }  
+        
     }
     
     @FXML
     public void snoozeAlarm1(ActionEvent event) throws IOException {
         a1.snooze();
     }
+    
+    @FXML
+    public void snoozeAlarm2(ActionEvent event) throws IOException {
+        a2.snooze();
+    }
+        
     
     
     //Methods to handle the operations of the radio
@@ -248,10 +323,30 @@ public class ClockRadioAppController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {        
         
         onOffRadBtn.setVisible(false);
+        
+        
         //Creating choices for the choicebox by using an observableList
         ObservableList<String> availableChoices = FXCollections.observableArrayList("AM", "PM");
-        meridian.setItems(availableChoices);        
-        alarm1Period.setItems(availableChoices);
+        meridian.setItems(availableChoices);
+
+        ObservableList<String> availableSounds = FXCollections.observableArrayList("1", "2");
+        
+        
+       
+        
+        //Initialize alarm 1 gui
+        displayAlarmTime(a1, alarm1time);
+        alarm1Period.setItems(availableChoices);                
+        alarm1Sound.setItems(availableSounds);
+        alarm1Btn.setText("Off");
+        
+        //Initialize alarm 2 gui
+        displayAlarmTime(a2, alarm2time);
+        alarm2Period.setItems(availableChoices);               
+        alarm2Sound.setItems(availableSounds);
+        alarm2Btn.setText("Off");
+        
+        
 
         //Thread to update what string is stored in the clock label as the time
         //changes.
@@ -284,6 +379,19 @@ public class ClockRadioAppController implements Initializable {
             });
         thread.start();
                 
-    }    
+    }
+    
+    public void displayAlarmTime(Alarm alarm, Label alarmLabel) {
+        
+        if(alarm.getMinute() >= 10) {
+            alarmLabel.setText(Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()) + " " + alarm.getPeriod());
+        }
+        else {
+            alarmLabel.setText(Integer.toString(alarm.getHour()) + ":0" + Integer.toString(alarm.getMinute()) + " " + alarm.getPeriod()); 
+        }
+        
+    }
+
+    
     
 }

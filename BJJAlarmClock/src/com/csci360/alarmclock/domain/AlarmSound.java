@@ -20,13 +20,15 @@ public class AlarmSound implements LineListener {
     String soundPath;
     
     public AlarmSound() {
-        this.playCompleted = false;
+        //this.playCompleted = false;
         this.soundPath = "";
     }
     
     // play a sound
     void play() {
         File audioFile = new File(this.soundPath);
+        //System.out.println("alarm is playing!");
+        this.playCompleted = false;
         
         try {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -37,8 +39,9 @@ public class AlarmSound implements LineListener {
             audioClip.open(audioStream);
             
             audioClip.loop(2);
-            
+                                    
             while (!playCompleted) {
+                
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {

@@ -83,7 +83,8 @@ public class Alarm {
     // turn alarm on and off
     public void toggleAlarm() {
         if(this.active == true) {
-            this.active = false;            
+            this.active = false;
+            System.out.println("alarm deactivated");
             this.alarmSound.stop();
         }
         else {
