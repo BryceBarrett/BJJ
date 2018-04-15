@@ -94,13 +94,34 @@ public class Alarm {
     }
     
     public void snooze() {
-        this.alarmSound.stop();
-        try {
-            TimeUnit.MINUTES.sleep(1);
-            System.out.println("alarm awake");
-        } catch (InterruptedException e) {
-            System.out.println("error");
-        }
+        if(this.alarmSound.playCompleted == false) {
+            this.alarmSound.stop();            
+            this.minute = this.minute + 5;
+            
+            if(this.minute > 59) {
+                this.minute = this.minute - 60;
+                this.hour = this.hour + 1;
+                if(this.hour > 12) {
+                    this.hour = this.hour - 12;                    
+                }
+                if(this.hour == 12) {
+                    if(this.period.equals("AM")) {
+                        this.period = "PM";                    
+                    }
+                    else {
+                        this.period = "AM";
+                    }
+                }
+            }            
+            
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            
+            this.alarmSound.playCompleted = false;
+        }        
         
     }
     

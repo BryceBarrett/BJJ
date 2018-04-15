@@ -221,13 +221,21 @@ public class ClockRadioAppController implements Initializable {
     }
     
     @FXML
-    public void snoozeAlarm1(ActionEvent event) throws IOException {
+    public void snoozeAlarm1(ActionEvent event) throws IOException, InterruptedException {
         a1.snooze();
+        alarmThread1.join();
+        Thread alarmThread1 = new Thread(new AlarmRunnable(clock, a1));
+        alarmThread1.start();
+        displayAlarmTime(a1, alarm1time);
     }
     
     @FXML
-    public void snoozeAlarm2(ActionEvent event) throws IOException {
+    public void snoozeAlarm2(ActionEvent event) throws IOException, InterruptedException {
         a2.snooze();
+        alarmThread2.join();
+        Thread alarmThread2 = new Thread(new AlarmRunnable(clock, a2));
+        alarmThread2.start();
+        displayAlarmTime(a2, alarm2time);
     }
         
     
