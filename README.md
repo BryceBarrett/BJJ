@@ -1,6 +1,28 @@
 # BJJ
 
-Check out the newly added Timer tests!
+INSTRUCTIONS
+
+Setting the time:
+1) Fill in the fields for hour, minute, and seconds.
+2) Choose 'AM' or 'PM' from the choice box.
+3) Click 'Set Time'.
+
+Setting an alarm:
+1) Fill in the fields for hour and minute.
+2) Choose 'AM' or 'PM' from the choice box.
+3) Choose '1' or '2' from the choice box to choose a sound.
+4) Click 'Update' to set a new time for the alarm.
+5) Toggle the alarm by pressing the 'On/Off' button.
+  *Pressing 'Snooze' while the alarm is going off will reset
+   the alarm for 5 minutes later.
+   
+Playing the radio:
+1) Turn radio on/off using the 'Radio On/Radio Off' button.
+2) Press 'Pause' to pause the current song.
+3) Press 'Skip' to skip to the next song.
+4) Press 'Restart' to replay the current song.
+
+
 
 CLONING:
 1) From the repo, click "Clone or download" and 
