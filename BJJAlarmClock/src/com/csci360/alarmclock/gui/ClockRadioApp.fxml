@@ -79,7 +79,7 @@
                </cursor>
             </ChoiceBox>
             <Button fx:id="alarm1UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm1" prefHeight="17.0" prefWidth="57.0" text="Update" />
-            <Label layoutX="115.0" layoutY="14.0" text="Alarm 1" textFill="RED">
+            <Label fx:id="alarm1Lbl" layoutX="115.0" layoutY="14.0" text="Alarm 1" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
@@ -105,7 +105,7 @@
                </cursor>
             </ChoiceBox>
             <Button fx:id="alarm2UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm2" prefHeight="17.0" prefWidth="57.0" text="Update" />
-            <Label layoutX="115.0" layoutY="14.0" text="Alarm 2" textFill="RED">
+            <Label fx:id="alarm2Lbl" layoutX="115.0" layoutY="14.0" text="Alarm 2" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>

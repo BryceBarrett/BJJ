@@ -19,8 +19,7 @@ public class AlarmSound implements LineListener {
     boolean playCompleted;
     String soundPath;
     
-    public AlarmSound() {
-        //this.playCompleted = false;
+    public AlarmSound() {        
         this.soundPath = "";
     }
     
