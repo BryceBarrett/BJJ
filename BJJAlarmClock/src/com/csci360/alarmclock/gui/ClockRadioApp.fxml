@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="686.0" style="-fx-background-image: url(&quot;http://wallpaper-gallery.net/images/cool-simple-wallpapers/cool-simple-wallpapers-22.jpg&quot;);" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.gui.ClockRadioAppController">
+<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="686.0" style="-fx-background-image: url(&quot;http://wallpaper-gallery.net/images/cool-simple-wallpapers/cool-simple-wallpapers-22.jpg&quot;);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csci360.alarmclock.gui.ClockRadioAppController">
    <children>
       <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="14.0" prefHeight="133.0" prefWidth="290.0" style="-fx-background-color: #08082b#08082b; -fx-background-radius: 20 20 20 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
@@ -63,8 +63,14 @@
       <AnchorPane layoutX="376.0" layoutY="173.0" prefHeight="133.0" prefWidth="277.0" style="-fx-background-color: #08082b#08082b; -fx-background-radius: 20 20 20 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
          <children>
             <Label fx:id="alarm1time" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="47.0" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: WHITE; -fx-background-radius: 10 10 10 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" textAlignment="CENTER" />
-            <Button fx:id="alarm1Btn" layoutX="149.0" layoutY="47.0" mnemonicParsing="false" onAction="#toggleAlarm1" prefHeight="32.0" prefWidth="57.0" text="Alarm 1" />
-            <Button fx:id="alarm1Snooze" layoutX="211.0" layoutY="47.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="32.0" prefWidth="57.0" text="Snooze" />
+            <Button fx:id="alarm1Btn" layoutX="149.0" layoutY="47.0" mnemonicParsing="false" onAction="#toggleAlarm1" prefHeight="32.0" prefWidth="57.0" text="Alarm 1">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button fx:id="alarm1Snooze" layoutX="211.0" layoutY="47.0" mnemonicParsing="false" onAction="#snoozeAlarm1" prefHeight="32.0" prefWidth="57.0" text="Snooze">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
             <TextField fx:id="alarm1Hour" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <TextField fx:id="alarm1Min" layoutX="63.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <Label layoutX="57.0" layoutY="91.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
@@ -78,7 +84,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
-            <Button fx:id="alarm1UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm1" prefHeight="17.0" prefWidth="57.0" text="Update" />
+            <Button fx:id="alarm1UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm1" prefHeight="17.0" prefWidth="57.0" text="Update">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
             <Label fx:id="alarm1Lbl" layoutX="115.0" layoutY="14.0" text="Alarm 1" textFill="RED">
                <font>
                   <Font size="14.0" />
@@ -89,8 +98,14 @@
       <AnchorPane layoutX="376.0" layoutY="312.0" prefHeight="133.0" prefWidth="277.0" style="-fx-background-color: #08082b#08082b; -fx-background-radius: 20 20 20 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
          <children>
             <Label fx:id="alarm2time" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="47.0" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: WHITE; -fx-background-radius: 10 10 10 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" />
-            <Button fx:id="alarm2Btn" layoutX="149.0" layoutY="47.0" mnemonicParsing="false" onAction="#toggleAlarm2" prefHeight="32.0" prefWidth="57.0" text="Alarm 1" />
-            <Button fx:id="alarm2Snooze" layoutX="211.0" layoutY="47.0" mnemonicParsing="false" onAction="#snoozeAlarm2" prefHeight="32.0" prefWidth="57.0" text="Snooze" />
+            <Button fx:id="alarm2Btn" layoutX="149.0" layoutY="47.0" mnemonicParsing="false" onAction="#toggleAlarm2" prefHeight="32.0" prefWidth="57.0" text="Alarm 2">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button fx:id="alarm2Snooze" layoutX="211.0" layoutY="47.0" mnemonicParsing="false" onAction="#snoozeAlarm2" prefHeight="32.0" prefWidth="57.0" text="Snooze">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
             <TextField fx:id="alarm2Hour" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <TextField fx:id="alarm2Min" layoutX="63.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <Label layoutX="57.0" layoutY="91.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
@@ -104,7 +119,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
-            <Button fx:id="alarm2UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm2" prefHeight="17.0" prefWidth="57.0" text="Update" />
+            <Button fx:id="alarm2UpdateBtn" layoutX="211.0" layoutY="87.0" mnemonicParsing="false" onAction="#updateAlarm2" prefHeight="17.0" prefWidth="57.0" text="Update">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
             <Label fx:id="alarm2Lbl" layoutX="115.0" layoutY="14.0" text="Alarm 2" textFill="RED">
                <font>
                   <Font size="14.0" />

@@ -285,9 +285,14 @@ public class ClockRadioAppController implements Initializable {
         if(radio.status.equals("stopped")){
             radio.resumeRadio();
             onOffRadBtn.setText("Radio Off");
+            statusLbl.setText("Current Status: Playing");
+            statusLbl.setTextFill(Color.web("#00b300"));
         }else{
             radio.stopRadio();
             onOffRadBtn.setText("Radio On");
+            statusLbl.setText("Current Status: Off");
+            statusLbl.setTextFill(Color.web("#ff0000"));
+            
         }
             
         
