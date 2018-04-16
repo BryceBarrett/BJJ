@@ -15,13 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author Julius Alipala
  */
 public class Alarm {
-    
-    /*
-    public enum Period {
-        AM, PM
-    }
-    */
-      
+        
     private int hour;
     private int minute;
     private String period;
@@ -94,6 +88,8 @@ public class Alarm {
         }
     }
     
+    // method for snoozing the alarm
+    // turns off audio and resets the alarm
     public void snooze() {
         if(this.alarmSound.playCompleted == false) {
             this.alarmSound.stop();            
@@ -128,17 +124,7 @@ public class Alarm {
     
     // compare Alarm time with Clock time
     public boolean compareTime(TimerClock timerClock) {
-        //Period clockPeriod;
-        
-        /*
-        if(timerClock.getMeridian().equals("AM")) {
-            clockPeriod = Period.AM;
-        }
-        else {
-            clockPeriod = Period.PM;
-        }
-        */
-    
+            
         if(this.getHour() == timerClock.getHour() && 
            this.getMinute() == timerClock.getMinutes() &&
            this.getPeriod() == timerClock.getMeridian()) {

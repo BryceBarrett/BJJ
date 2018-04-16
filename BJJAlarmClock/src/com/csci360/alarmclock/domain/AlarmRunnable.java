@@ -16,19 +16,18 @@ import java.util.logging.Logger;
 public class AlarmRunnable implements Runnable {
     private TimerClock myClock;
     private Alarm myAlarm;
-    //private String soundPath = "C:/Users/JoolsAli/Documents/NetBeansProjects/BJJ/BJJAlarmClock/src/com/csci360/alarmclock/Sounds/firetruck.wav";
-    
+        
     public AlarmRunnable(TimerClock myClock, Alarm myAlarm) {
         this.myClock = myClock;
         this.myAlarm = myAlarm;
     }
     
+    // thread for comparing alarm time with clock time
     @Override
     public void run() {
         //System.out.println("alarm compare thread running");
         boolean alarmTriggered = false;
-        
-        //AlarmSound soundPlayer = new AlarmSound();
+                
         while(myAlarm.isActive()) {
             try {
                 
