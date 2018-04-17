@@ -2,6 +2,10 @@
 
 INSTRUCTIONS
 
+Running the application in Netbeans:
+1) Navigate to BJJAlarmClock>Source Packages>com.csci360.alarmclock.gui
+2) Run 'ClockRadioMain.java'
+
 Setting the time:
 1) Fill in the fields for hour, minute, and seconds.
 2) Choose 'AM' or 'PM' from the choice box.
