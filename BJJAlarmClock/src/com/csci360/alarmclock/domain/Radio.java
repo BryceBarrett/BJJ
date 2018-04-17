@@ -1,5 +1,6 @@
 /*
- * 
+ * Class to loop through a folder containing .wav files. Will be used to 
+ * act as a radio
  */
 package com.csci360.alarmclock.domain;
 import java.util.TimerTask;

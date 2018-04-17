@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * class to handle playing a single audio .wav file
  */
 package com.csci360.alarmclock.domain;
 
@@ -51,7 +49,7 @@ public class RadioPlayer {
         return secIntPos;
     }
      
-    // Method to play the audio
+    // plays the audio
     public void play() 
     {
         //start the clip
@@ -60,7 +58,7 @@ public class RadioPlayer {
         status = "play";
     }
      
-    // Method to pause the audio
+    // pauses the audio
     public void pause() 
     {
         if (status.equals("paused")) 
@@ -74,7 +72,7 @@ public class RadioPlayer {
         status = "paused";
     }
      
-    // Method to resume the audio
+    //will resume the paused audio
     public void resumeAudio() throws UnsupportedAudioFileException, IOException, LineUnavailableException 
     {
         if (status.equals("play")) 
@@ -88,7 +86,7 @@ public class RadioPlayer {
         this.play();
     }
      
-    // Method to restart the audio
+    //restarts audio from the beginning
     public void restart() throws IOException, LineUnavailableException, UnsupportedAudioFileException 
     {
         clip.stop();
@@ -99,7 +97,7 @@ public class RadioPlayer {
         this.play();
     }
     
-    // Method to stop the audio
+    //stops the audio from playing
     public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException 
     {
         currentFrame = 0L;
@@ -108,7 +106,7 @@ public class RadioPlayer {
     }
     
      
-    // Method to reset audio stream
+    //resets the audio stream to a new file/audio file
     public void resetAudioStream(String newFilePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException 
     {
         audioInputStream = AudioSystem.getAudioInputStream(
