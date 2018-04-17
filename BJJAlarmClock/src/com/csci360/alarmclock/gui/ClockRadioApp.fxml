@@ -74,7 +74,7 @@
             <TextField fx:id="alarm1Hour" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <TextField fx:id="alarm1Min" layoutX="63.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <Label layoutX="57.0" layoutY="91.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
-            <ChoiceBox fx:id="alarm1Period" layoutX="123.0" layoutY="86.0" prefHeight="27.0" prefWidth="15.0">
+            <ChoiceBox fx:id="alarm1Period" layoutX="104.0" layoutY="87.0" prefHeight="27.0" prefWidth="15.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -109,7 +109,7 @@
             <TextField fx:id="alarm2Hour" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <TextField fx:id="alarm2Min" layoutX="63.0" layoutY="87.0" prefHeight="25.0" prefWidth="36.0" />
             <Label layoutX="57.0" layoutY="91.0" prefHeight="17.0" prefWidth="6.0" text=":" textFill="WHITE" />
-            <ChoiceBox fx:id="alarm2Period" layoutX="123.0" layoutY="86.0" prefHeight="27.0" prefWidth="15.0">
+            <ChoiceBox fx:id="alarm2Period" layoutX="105.0" layoutY="87.0" prefHeight="27.0" prefWidth="15.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
